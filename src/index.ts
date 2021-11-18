@@ -8,6 +8,12 @@ import pixelmatch from "pixelmatch";
 import { PNG } from "pngjs";
 import open from "open";
 
+function sleep(duration: number): Promise<void> {
+  return new Promise((resolve) => {
+    setTimeout(resolve, duration * 1000);
+  });
+}
+
 type PixelMatcherOpts = {
   urlA: string;
   urlB: string;
@@ -15,6 +21,7 @@ type PixelMatcherOpts = {
   selectorB: string;
   out: string;
   threshold: number;
+  delay: number;
 };
 
 export async function pixelMatcher({
@@ -24,6 +31,7 @@ export async function pixelMatcher({
   selectorB,
   out,
   threshold,
+  delay,
 }: PixelMatcherOpts) {
   // Setup out dir
   const outDir = path.resolve(process.cwd(), out);
@@ -36,6 +44,7 @@ export async function pixelMatcher({
 
   // Open given URL
   await page.goto(urlA, { waitUntil: "domcontentloaded" });
+  await sleep(delay);
 
   // Capture element A
   const elementA = await page.$(selectorA);
@@ -50,6 +59,7 @@ export async function pixelMatcher({
   // Capture element B
   if (urlB !== urlA) {
     await page.goto(urlB, { waitUntil: "domcontentloaded" });
+    await sleep(delay);
   }
   const elementB = await page.$(selectorB);
   if (!elementB) {
