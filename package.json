@@ -1,5 +1,5 @@
 {
-  "name": "pixelmatcher",
+  "name": "@fand/pixelmatcher",
   "version": "0.0.0",
   "description": "",
   "type": "module",
