@@ -1,0 +1,20 @@
+{
+  "name": "pixelmatcher",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "fand <fand.gmork@gmail.com> (https://gmork.in/)",
+  "license": "MIT",
+  "dependencies": {
+    "mkdirp": "^1.0.4",
+    "open": "^8.4.0",
+    "pixelmatch": "^5.2.1",
+    "playwright": "^1.16.3",
+    "pngjs": "^5.0.0",
+    "rimraf": "^3.0.2"
+  }
+}
